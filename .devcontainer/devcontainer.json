@@ -15,8 +15,9 @@
     "8787": { "label": "RStudio Server" }
   },
 
-  "postCreateCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd && (rstudio-server start || true)'"
+  "postAttachCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd && (rserver || true)'"
 }
+
 
 
 

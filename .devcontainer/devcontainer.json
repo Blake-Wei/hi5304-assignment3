@@ -6,6 +6,11 @@
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
   "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/apt-packages:1": {
+      "packages": "postgresql-client"
+    },
+
     "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {},
     "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
   },
@@ -15,8 +20,11 @@
     "8787": { "label": "RStudio Server" }
   },
 
-  "postAttachCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd && (rserver || true)'"
+  "postCreateCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd'",
+
+  "postAttachCommand": "sudo bash -lc '(rserver || true)'"
 }
+
 
 
 

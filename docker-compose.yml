@@ -2,15 +2,17 @@ version: "3.8"
 
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/python:3.12-bookworm
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
     volumes:
       - .:/workspaces/${localWorkspaceFolderBasename}:cached
     command: sleep infinity
     depends_on:
       - db
     ports:
-      - "8787:8787"   # RStudio Server (web)
-      - "8888:8888"   # Jupyter (optional, handy)
+      - "8787:8787"   # RStudio Server
+      - "8888:8888"   # Jupyter Lab (optional)
 
   db:
     image: postgres:16
@@ -26,6 +28,7 @@ services:
 
 volumes:
   hi5304_pgdata:
+
 
 
 

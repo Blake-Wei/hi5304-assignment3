@@ -8,6 +8,9 @@ services:
     command: sleep infinity
     depends_on:
       - db
+    ports:
+      - "8787:8787"   # RStudio Server (web)
+      - "8888:8888"   # Jupyter (optional, handy)
 
   db:
     image: postgres:16
@@ -23,6 +26,7 @@ services:
 
 volumes:
   hi5304_pgdata:
+
 
 
 

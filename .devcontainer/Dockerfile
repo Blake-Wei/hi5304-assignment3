@@ -6,11 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Defensive: remove any problematic yarn repo files (if present)
 RUN rm -rf /etc/apt/sources.list.d/*yarn* || true
 
-# ---- System dependencies (Debian) ----
-# - postgresql-client -> psql
-# - r-base -> R
-# - build libs -> compile common R packages (tidyverse, etc.)
-# - pandoc -> helpful for RMarkdown/Quarto style workflows
+# System deps for Postgres client + R + compiling common R packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       postgresql-client \
@@ -24,24 +20,19 @@ RUN apt-get update && \
       pandoc \
     && rm -rf /var/lib/apt/lists/*
 
-# ---- Python packages (system-wide) ----
-# Ensures VS Code + Jupyter use the same Jupyter install (not user-level)
+# Python deps (so VS Code/Jupyter uses container Python)
 COPY .devcontainer/requirements.txt /tmp/requirements.txt
 RUN python -m pip install --no-cache-dir --upgrade pip && \
-    python -m pip install --no-cache-dir -r /tmp/requirements.txt && \
-    python -m pip install --no-cache-dir jupyter ipykernel
+    python -m pip install --no-cache-dir -r /tmp/requirements.txt
 
-# ---- R packages (system-wide) ----
-# Preinstall course packages + IRkernel so students don't install anything in class
+# Install R packages system-wide (no student installs)
 RUN R -q -e 'options(repos=c(CRAN="https://cloud.r-project.org")); \
             install.packages(c("tidyverse","janitor","skimr","IRkernel"), \
                              Ncpus=max(1, parallel::detectCores()-1))'
 
-# Register the R kernel spec system-wide so it appears in VS Code/Jupyter
+# Register R kernel system-wide so it always appears
 RUN R -q -e 'IRkernel::installspec(user=FALSE, name="ir42", displayname="R (4.2.2)")'
 
-# Optional: show kernels at build time in logs (nice sanity check)
-RUN jupyter kernelspec list
 
 
 

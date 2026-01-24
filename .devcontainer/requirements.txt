@@ -1,11 +1,21 @@
+# Core numeric/data
 numpy
 pandas
+
+# Viz + stats
 matplotlib
 scipy
 statsmodels
+seaborn
+
+# ML
 scikit-learn
+
+# Jupyter (keep these here so the notebook kernel always works)
 jupyter
 ipykernel
-seaborn
+ipywidgets
+
+# Postgres + ORM
 sqlalchemy
 psycopg2-binary

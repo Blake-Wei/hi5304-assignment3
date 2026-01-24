@@ -1,12 +1,10 @@
-version: "3.8"
-
 services:
   app:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
     volumes:
-      - .:/workspaces/${localWorkspaceFolderBasename}:cached
+      - .:/workspaces/hi5304-notebooks:cached
     command: sleep infinity
     depends_on:
       - db
@@ -28,6 +26,7 @@ services:
 
 volumes:
   hi5304_pgdata:
+
 
 
 

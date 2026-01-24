@@ -1,37 +1,23 @@
 {
   "name": "HI5304 Python + Postgres + RStudio",
-
   "dockerComposeFile": ["../docker-compose.yml"],
   "service": "app",
   "runServices": ["db"],
-
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
+  "workspaceFolder": "/workspaces/hi5304-notebooks",
   "forwardPorts": [8787, 8888],
   "portsAttributes": {
-    "8787": {
-      "label": "RStudio Server",
-      "onAutoForward": "openBrowser"
-    },
-    "8888": {
-      "label": "Jupyter Lab"
-    }
+    "8787": { "label": "RStudio Server", "onAutoForward": "openBrowser" },
+    "8888": { "label": "Jupyter Lab" }
   },
-
   "postCreateCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd'",
-
   "postAttachCommand": "sudo bash -lc 'rstudio-server restart || true'",
-
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter",
-        "REditorSupport.r"
-      ]
+      "extensions": ["ms-python.python", "ms-toolsai.jupyter", "REditorSupport.r"]
     }
   }
 }
+
 
 
 

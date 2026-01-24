@@ -9,7 +9,7 @@
     "8787": { "label": "RStudio Server", "onAutoForward": "openBrowser" },
     "8888": { "label": "Jupyter Lab" }
   },
-  "postCreateCommand": "sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd'",
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r .devcontainer/requirements.txt && sudo bash -lc 'echo \"vscode:hi5304\" | chpasswd'",
   "postAttachCommand": "sudo bash -lc 'rstudio-server restart || true'",
   "customizations": {
     "vscode": {
@@ -17,6 +17,7 @@
     }
   }
 }
+
 
 
 

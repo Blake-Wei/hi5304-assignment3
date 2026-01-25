@@ -1,0 +1,13 @@
+[
+  {
+    "stage_name": "cardio",
+    "modality": "walking",
+    "duration": 5,
+    "intensity": "level 5",
+    "exercise_heart_rate": 0,
+    "perceived_exertion": 0,
+    "symptoms": [
+      "no"
+    ]
+  }
+]

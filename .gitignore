@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Generated analysis-ready CSV files (run assignment3_data_cleaning.py to recreate)
+assignment3/measurements_analysis_ready.csv
+assignment3/visits_analysis_ready.csv
+assignment3/thyroid_testing_cohort.csv
+assignment3/cleaning_summary.txt
+
+# Large raw data file
+data/ss_measurements_timeseries.csv
